@@ -1,0 +1,40 @@
+package codes.abdullah.measurement.system.%s;
+
+import java.util.Arrays;
+
+import codes.abdullah.measurement.dimension.Dimensions;
+import codes.abdullah.measurement.dimension.%s;
+import codes.abdullah.measurement.unit.AbstractUnit;
+import codes.abdullah.measurement.unit.Unit;
+
+public class %s extends AbstractUnit<%s> implements %s<%s> {
+
+	%s(double factor, String symbol, int unitIndex, double max) {
+		super(factor, Dimensions.%s, symbol, unitIndex, max);
+	}
+
+	@Override
+	public Unit<%s> getBaseUnit() {
+		return %s;
+	}
+
+	@Override
+	public Unit<%s> unitAt(int i) {
+		return %s[i];
+	}
+
+	@Override
+	public Unit<%s>[] units() {
+		return Arrays.copyOf(%s, %s.length);
+	}
+
+	@Override
+	public int unitsCount() {
+		return %s.length;
+	}
+
+
+
+	%s
+
+}

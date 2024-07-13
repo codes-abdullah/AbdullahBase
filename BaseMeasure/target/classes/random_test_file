@@ -1,0 +1,15 @@
+package codes.abdullah.measurement.system.%s;
+
+import static org.junit.Assert.assertEquals;
+
+import static codes.abdullah.measurement.utils.TestUtils.nextDouble;
+import static codes.abdullah.measurement.utils.TestUtils.loops;
+import static codes.abdullah.measurement.utils.TestUtils.delta;
+import org.junit.Test;
+
+public class %s {
+	
+
+	%s
+	
+}

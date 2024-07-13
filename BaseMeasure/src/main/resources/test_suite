@@ -1,0 +1,11 @@
+package codes.abdullah.measurement.system.%s;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({ %s })
+public class %s {
+
+}

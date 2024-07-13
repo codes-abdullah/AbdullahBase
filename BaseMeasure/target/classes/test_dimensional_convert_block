@@ -1,0 +1,49 @@
+			final double src = %s;
+			double n = src;
+
+// ========================
+			Unit<%s> from = %s;
+			Unit<%s> to = %s;
+// ========================
+			Unit<%s> fromBase = from.getBaseUnit();
+			Unit<%s> toBase = to.getBaseUnit();
+// ========================
+			MeasurementSystem fromSystem = from.getSystem();
+			DimensionConverter<%s> dc = MeasurementSystems.findConverter(from, to);
+			double superiorPerInferiorFactor = MeasurementSystems.findConverter(from, to).getFactor();
+// ========================
+// TEST CONVERT TO SUPERIOR BASE
+// ========================
+			double fromFactor = from.getFactor();
+			double fromBaseFactor = fromBase.getFactor();			
+			double nFromBase = n * (fromFactor / fromBaseFactor);
+			String message1 = String.format("n(%%s) * (fromFactor(%%s) / fromBaseFactor(%%s)) = nFromBase(%%s)", noE(n),
+					noE(fromFactor), noE(fromBaseFactor), noE(nFromBase));
+			assertEquals(message1, from.toBase(n), nFromBase, delta);
+// ========================
+			double nFromBaseAsToBase = fromSystem == dc.getSuperior() ? (nFromBase / superiorPerInferiorFactor)
+					: (nFromBase * superiorPerInferiorFactor);
+			String message2 = fromSystem == dc.getSuperior()
+					? String.format("nFromBase(%%s) / superiorPerInferiorFactor(%%s) = nFromBaseAsToBase(%%s)",
+							noE(nFromBase), noE(superiorPerInferiorFactor), noE(nFromBaseAsToBase))
+					: String.format("nFromBase(%%s) * superiorPerInferiorFactor(%%s) = nFromBaseAsToBase(%%s)",
+							noE(nFromBase), noE(superiorPerInferiorFactor), noE(nFromBaseAsToBase));
+// ========================
+// TEST CONVERT TO INFERIOR BASE
+// ========================
+			double toFactor = to.getFactor();
+			double toBaseFactor = toBase.getFactor();
+			double nToBase = n * (toFactor / toBaseFactor);
+			String message3 = String.format("n(%%s) * (toFactor(%%s) / toBaseFactor(%%s)) = nToBase(%%s)", noE(n), noE(toFactor),
+							noE(toBaseFactor), noE(nToBase));
+			assertEquals(message3, to.toBase(n), nToBase, delta);
+// ========================
+// note the order is changed
+			n = nFromBaseAsToBase * (toBaseFactor / toFactor);
+			String message4 = String.format("nFromBaseAsToBase(%%s) * (toBaseFactor(%%s) / toFactor(%%s)) = n(%%s)",
+							noE(nFromBaseAsToBase), noE(toBaseFactor), noE(toFactor), noE(n));
+// ========================
+// COMPARE n to CONVERTER RESULTS
+// ========================
+			String message5 = message1 + "\n" + message2 + "\n" + message3 + "\n" + message4;
+			assertEquals(message5, n, from.to(src, to), delta);

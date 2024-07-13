@@ -1,0 +1,81 @@
+package codes.abdullah.array.YYYs;
+
+import codes.abdullah.project.lang.Lang;
+import codes.abdullah.project.Immutable;
+
+class XMutableZZZArray extends AbstractXZZZArray {
+	private YYY[] array;
+	private int length;
+
+	XMutableZZZArray(YYY[] array, int length) {
+		this.array = array;
+		this.length = length;
+	}
+	
+		@Override
+	public YYY getAt(int index) {
+		return array[index];
+	}
+
+	@Override
+	public XZZZArray setAt(int index, YYY value) {
+		array[index] = value;
+		return this;
+	}
+
+	@Override
+	YYY[] unsafe() {
+		return array;
+	}
+
+	@Override
+	public YYY[] getArray() {
+		return array;
+	}
+
+	@Override
+	public int length() {
+		return length;
+	}
+
+	@Override
+	public XZZZArray assign(YYY[] array, int length) {
+		this.array = array;
+		this.length = length;
+		return this;
+	}
+
+	@Override
+	public XZZZArray newClone() {
+		YYY[] arr2 = Lang.copy.of.this_(array, length);
+		return new XMutableZZZArray(arr2, length);
+	}
+
+	@Override
+	public XZZZArray toImmutable() {
+		return new XImmutableZZZArray(array, length);
+	}
+
+	@Override
+	public XZZZArray newInstance(YYY[] array, int length) {
+		return new XMutableZZZArray(array, length);
+	}
+
+	@Override
+	public XZZZArray newInstance(Immutable<?> i) {
+		YYY[] array = new YYY[Lang.constant.DEFAULT_ARRAY_CAPACITY];
+		return i.isImmutable() ? new XImmutableZZZArray(array, 0) :  new XMutableZZZArray(array, 0); 
+	}
+
+
+	@Override
+	public XZZZArray toMutable() {
+		return this;
+	}
+
+	@Override
+	public boolean isImmutable() {
+		return false;
+	}
+
+}

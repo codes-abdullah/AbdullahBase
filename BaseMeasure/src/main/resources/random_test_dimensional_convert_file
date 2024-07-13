@@ -1,0 +1,21 @@
+package codes.abdullah.measurement.system.dimension.convert;
+
+import static codes.abdullah.measurement.utils.TestUtils.delta;
+import static codes.abdullah.measurement.utils.TestUtils.noE;
+import static codes.abdullah.measurement.utils.TestUtils.loops;
+import static codes.abdullah.measurement.utils.TestUtils.nextDouble;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import codes.abdullah.measurement.dimension.%s;
+import codes.abdullah.measurement.dimension.convert.DimensionConverter;
+import codes.abdullah.measurement.system.MeasurementSystem;
+import codes.abdullah.measurement.system.MeasurementSystems;
+import codes.abdullah.measurement.system.%s.%s;
+import codes.abdullah.measurement.system.%s.%s;
+import codes.abdullah.measurement.unit.Unit;
+
+public class %s {	
+	%s
+}

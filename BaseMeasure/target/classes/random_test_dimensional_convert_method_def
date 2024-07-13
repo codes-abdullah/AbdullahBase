@@ -1,0 +1,6 @@
+	@Test
+	public void test%sTo%s() {
+		for (int i = 0; i < loops; i++) {			
+			%s	
+		}
+	}

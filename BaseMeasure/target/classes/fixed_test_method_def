@@ -1,0 +1,9 @@
+
+	@Test
+	public void test%s() {		
+		//from_factor = %s
+		final double from_factor = %s.%s.getFactor();
+		double to_factor = 0;
+		String message;
+		%s
+	}

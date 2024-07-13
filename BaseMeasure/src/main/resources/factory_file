@@ -1,0 +1,7 @@
+package codes.abdullah.measurement.system.%s;
+
+
+@SuppressWarnings("unchecked")
+public class %s {
+	%s
+}

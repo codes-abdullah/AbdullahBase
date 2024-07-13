@@ -1,0 +1,51 @@
+package codes.abdullah.array.YYYs;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import codes.abdullah.project.Immutable;
+import codes.abdullah.array.XArray;
+import codes.abdullah.project.lang.Lang;
+
+/**
+ * Simple wrapper to implement mutability/immutability
+ */
+public interface XZZZArray extends XArray<XZZZArray> {
+
+	YYY[] getArray();
+	
+	YYY getAt(int index);
+	
+	XZZZArray setAt(int index, YYY value);
+
+	XZZZArray assign(YYY[] array, int length);
+
+	XZZZArray newInstance(YYY[] array, int length);
+	
+	XZZZArray newInstance(Immutable<?> i);
+
+	XZZZArray fill(YYY value, int from, int to);
+	
+	public static XZZZArray of() {
+		YYY[] arr = new YYY[Lang.constant.ARRAY_DEFAULT_CAPACITY];
+		return of(arr, arr.length);
+	}
+	
+	public static XZZZArray of(int length) {
+		YYY[] array = new YYY[length];
+		return of(array, length);
+	}
+
+	public static XZZZArray of(YYY[] array) {
+		return of(array, array.length);
+	}
+
+	public static XZZZArray of(YYY[] array, int length) {
+		return new XMutableZZZArray(array, length);
+	}
+
+	public static String join(XZZZArray[] arrays) {
+		return Arrays.stream(arrays).map(array -> array.toString())
+				.collect(Collectors.joining("\n"));
+	}
+
+}

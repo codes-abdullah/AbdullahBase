@@ -1,0 +1,1 @@
+public static final MeasurementSystem %s = new BasicMeasurementSystem("%s");

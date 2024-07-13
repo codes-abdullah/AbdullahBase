@@ -1,0 +1,75 @@
+// ============
+
+	/**
+	 * e.g: Unit
+	 */
+	public static String getUnitName() {
+		return Unit.class.getSimpleName();
+	}
+
+	/**
+	 * e.g: Unit.java
+	 */
+	public static String getUnitSourceName() {
+		return getUnitName() + ".java";
+	}
+
+	/**
+	 * e.g: ../measurement/unit/Unit.java
+	 */
+	public static String getUnitSourcePath() {
+		return getSystemPackagePath() + "/" + getUnitSourceName();
+	}
+
+	/**
+	 * e.g: ..measurement.unit.Unit
+	 */
+	public static String getUnitFQN() {
+		return getSystemPackageFQN() + "." + getUnitName();
+	}
+
+	/**
+	 * e.g: ..measurement.unit.Unit.class
+	 */
+	public static Class<?> getUnitClass() throws ClassNotFoundException {
+		return Class.forName(getUnitFQN());
+	}
+
+	// ============
+
+	/**
+	 * e.g: Units
+	 */
+	public static String getUnitsFactoryName() {
+		return Units.class.getSimpleName();
+	}
+
+	/**
+	 * e.g: Units.java
+	 */
+	public static String getUnitsFactorySourceName() {
+		return getUnitsFactoryName() + ".java";
+	}
+
+	/**
+	 * e.g: ../measurement/unit/Units.java
+	 */
+	public static String getUnitsFactorySourcePath() {
+		return getSystemPackagePath() + "/" + getUnitsFactorySourceName();
+	}
+
+	/**
+	 * e.g: ..measurement.unit.Units
+	 */
+	public static String getUnitsFactoryFQN() {
+		return getSystemPackageFQN() + "." + getUnitsFactoryName();
+	}
+
+	/**
+	 * e.g: ..measurement.unit.Units.class
+	 */
+	public static Class<?> getUnitsFactoryClass() throws ClassNotFoundException {
+		return Class.forName(getUnitsFactoryFQN());
+	}
+
+	// ============

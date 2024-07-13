@@ -1,0 +1,3 @@
+	public double to%s(double n) {
+		return to(n, %s.%s);
+	}

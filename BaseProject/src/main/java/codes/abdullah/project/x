@@ -1,0 +1,13 @@
+	public static void main(String[] args) {
+		CodepointSupport cps = CodepointSupport.DEBUG;
+		char[] arr = "	C1	odes	A2bdullah".toCharArray();
+		int alen = arr.length;
+		int spcount = cps.extendablePairsCount(arr, alen);
+		int len = alen - spcount;
+		for (int i = 0; i < len; i++) {
+			int x = cps.reindex(arr, alen, i);
+			int column = Lang.codepoint.column.of(arr, alen, x, 8, cps);
+			int columnIndex = Lang.codepoint.index.ofColumn(arr, alen, column+5, 8, cps);
+			System.out.printf("x(%d), column(%d), columnIndex(%d)\n", x, column, columnIndex);
+		}
+	}

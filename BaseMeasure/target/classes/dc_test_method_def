@@ -1,0 +1,10 @@
+
+	@Test
+	public void test%s() {
+		final double factor = %s.%s.getFactor();
+		String explain;
+		for (int i = 0; i < loops; i++) {
+			double n = nextDouble();
+			%s
+		}
+	}
