@@ -2,7 +2,7 @@ package codes.abdullah.project.lang.chars.chararray;
 
 import java.util.Arrays;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.Endian;
 
 public class LSort {

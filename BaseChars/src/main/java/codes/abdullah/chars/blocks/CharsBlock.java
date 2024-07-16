@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.chars.CharsUtils;
-import codes.abdullah.project.CodepointSupport;
 
 public class CharsBlock implements Iterator<CharsBlock> {
 	private final String src, prefix, suffix, esc;

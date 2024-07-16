@@ -15,11 +15,11 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.digits.Digits;
 import codes.abdullah.digits.java.JavaFloatingDecimal;
 import codes.abdullah.digits.java.JavaInteger;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Immutable;
 import codes.abdullah.project.ImplementationRequiredException;
 import codes.abdullah.project.lang.Lang;

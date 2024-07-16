@@ -1,0 +1,59 @@
+
+	/**
+	 *  @see #in(XDoubleArray, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement) {
+		return in(in, displacement, 0);
+	}
+
+	/**
+	 *  @see #in(XDoubleArray, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement, int from) {
+		return in(in, displacement, from, in.length());
+	}
+
+	/**
+	 *  @see #in(XDoubleArray, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement, int from, int to) {
+		final YYY[] arr = in.getArray();
+		final int inlen = in.length();
+		try {
+			boolean neg = displacement < 0;
+			displacement = Math.abs(displacement);
+			int from0 = from;
+			int to0 = to;
+			int range = to0 - from0;
+			// =================
+			int copylen = range - displacement;
+			int copyfrom = from0 + 0;
+			int copyinto = from0 + displacement;
+			// ==================
+			if (neg) {
+				copyfrom = from0 + displacement;
+				copyinto = from0 + 0;
+			}
+
+			if (in.isEndianSupported()) {
+				Endian read = in.getEndian();
+				from0 = read.from(from, to, inlen, arr.length);
+				to0 = read.to(from, to, inlen, arr.length);
+				range = to0 - from0;
+				// =================
+				copylen = range - displacement;
+				copyfrom = from0 + (read.isBig() ? displacement : 0);
+				copyinto = from0 + (read.isBig() ? 0 : displacement);
+				// ==================
+				if (neg) {
+					copyfrom = from0 + (read.isBig() ? 0 : displacement);
+					copyinto = from0 + (read.isBig() ? displacement : 0);
+				}
+			}
+
+			System.arraycopy(arr, copyfrom, arr, copyinto, copylen);
+		} catch (IndexOutOfBoundsException e) {
+			throw checkException(e, arr, inlen, displacement, from, to, in.getEndian());
+		}
+		return in.assign(arr);
+	}

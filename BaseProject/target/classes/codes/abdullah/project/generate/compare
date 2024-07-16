@@ -1,0 +1,17 @@
+
+	/**
+	 * @see #test(XDoubleArray, XDoubleArray)
+	 */
+	public int test(XZZZArray a, XZZZArray b) {
+		if (a == b)
+			return 0;
+		final int alen = a.length();
+		final int blen = b.length();
+		if (alen != blen)
+			return Integer.compare(alen, blen);
+		int c = 0;
+		for (int i = 0; i < alen; i++)
+			if ((c = ZZZ.compare(a.getAt(i), b.getAt(i))) != 0)
+				return c;
+		return 0;
+	}

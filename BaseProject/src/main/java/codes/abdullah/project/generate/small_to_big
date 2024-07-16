@@ -1,0 +1,42 @@
+/**
+	 * @see #longs(XIntArray, int, int, XLongArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in) {
+		return xoutputs(in, 0);
+	}
+
+	/**
+	 * @see #longs(XIntArray, int, int, XLongArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from) {
+		return xoutputs(in, from, in.length());
+	}
+
+	/**
+	 * @see #longs(XIntArray, int, int, XLongArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from, int to) {
+		return xoutputs(in, from, to, XOUTPUT.of());
+	}
+
+	/**
+	 * @see #longs(XIntArray, int, int, XLongArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from, int to, XOUTPUT out) {
+		final int inlen = to - from;
+		final int _in_size = INPUT_WRAPPER.SIZE;
+		final int _out_size = OUTPUT_WRAPPER.SIZE;
+		final int parts = _out_size / _in_size;
+		final int arr_out_len = (inlen + (parts - 1)) / parts;
+		final xoutput mask = (1 << _in_size) - 1;
+		final XOUTPUT tmp_out = out.toMutable().ensureCapacity(arr_out_len);
+		xoutput tmp = 0;
+		for (int i = 0; i < arr_out_len; i++) {
+			tmp = (xoutput) (in.getAt(from++) & mask);
+			for (int j = 1; j < parts && from < to; j++) {
+				tmp |= (((xoutput) (in.getAt(from++) & mask)) << _in_size * j);
+			}
+			tmp_out.setAt(i, tmp);
+		}
+		return out.assign(tmp_out);
+	}

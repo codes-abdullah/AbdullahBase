@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.Caret;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.lang.chars.codepoint.X.D;
 import net.miginfocom.swing.MigLayout;
 

@@ -2,23 +2,42 @@ package codes.abdullah.array.YYYs;
 
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.Immutable;
-
+import codes.abdullah.project.Endian;
 class XMutableZZZArray extends AbstractXZZZArray {
 	private YYY[] array;
 	private int length;
+	private Endian endian;
 
-	XMutableZZZArray(YYY[] array, int length) {
+	XMutableZZZArray(YYY[] array, int length, Endian endian) {
 		this.array = array;
 		this.length = length;
+		this.endian = endian;
 	}
 	
 		@Override
+	public XZZZArray setEndian(Endian e) {
+		this.endian = e;
+		return this;
+	}
+	
+	
+		@Override
+	public Endian getEndian() {
+		return endian;
+	}
+	
+	
+		@Override
 	public YYY getAt(int index) {
+		if(endian != null)
+			index = endian.index(index, length, array.length);
 		return array[index];
 	}
 
 	@Override
 	public XZZZArray setAt(int index, YYY value) {
+		if(endian != null)
+			index = endian.index(index, length, array.length);
 		array[index] = value;
 		return this;
 	}
@@ -37,34 +56,52 @@ class XMutableZZZArray extends AbstractXZZZArray {
 	public int length() {
 		return length;
 	}
+	
+	@Override
+	public XZZZArray assign(YYY[] array) {			
+		return assign(array, array.length);
+	}
+	
+		@Override
+	public XZZZArray assign(YYY[] array, int length) {		
+		return assign(array, length, endian);
+	}
 
 	@Override
-	public XZZZArray assign(YYY[] array, int length) {
+	public XZZZArray assign(YYY[] array, int length, Endian endian) {
 		this.array = array;
 		this.length = length;
+		this.endian = endian;
 		return this;
 	}
+
+	
+	@Override
+	public XZZZArray assign(XZZZArray t) {		
+		return assign(t.getArray(), t.length(), endian);
+	}
+
 
 	@Override
 	public XZZZArray newClone() {
 		YYY[] arr2 = Lang.copy.of.this_(array, length);
-		return new XMutableZZZArray(arr2, length);
+		return new XMutableZZZArray(arr2, length, endian);
 	}
 
 	@Override
 	public XZZZArray toImmutable() {
-		return new XImmutableZZZArray(array, length);
+		return new XImmutableZZZArray(array, length, endian);
 	}
 
 	@Override
 	public XZZZArray newInstance(YYY[] array, int length) {
-		return new XMutableZZZArray(array, length);
+		return new XMutableZZZArray(array, length, endian);
 	}
 
 	@Override
 	public XZZZArray newInstance(Immutable<?> i) {
 		YYY[] array = new YYY[Lang.constant.DEFAULT_ARRAY_CAPACITY];
-		return i.isImmutable() ? new XImmutableZZZArray(array, 0) :  new XMutableZZZArray(array, 0); 
+		return i.isImmutable() ? new XImmutableZZZArray(array, 0, endian) :  new XMutableZZZArray(array, 0, endian); 
 	}
 
 

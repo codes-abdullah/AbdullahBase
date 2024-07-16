@@ -1,7 +1,7 @@
 package codes.abdullah.project.lang.chars.chararray;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.digits.Range;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 public class LBlock {

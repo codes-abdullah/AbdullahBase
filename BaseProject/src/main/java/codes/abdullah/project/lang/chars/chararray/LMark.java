@@ -1,10 +1,14 @@
 package codes.abdullah.project.lang.chars.chararray;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.lang.chars.utils.CharsMatcher;
 
@@ -161,6 +165,20 @@ public class LMark {
 		return underneath(arr, len, from, to, marker, leftPadChar, middlePadChar, CodepointSupport.BMP);
 	}
 
+	public static void main(String[] args) throws IOException{
+		String s = Files.readAllLines(Paths.get(
+				"/home/abod/.local/bin/eclipse/jse/2022-12/workspace/AbdullahBase/BaseProject/src/test/resources/mark_underneeth_tests/block01.input"))
+				.stream().collect(Collectors.joining("\n"));
+		char[] arr = s.toCharArray();
+		int len = arr.length;
+		int from = 18, to = 32;
+		char leftPadChar = ' ';
+		char middlePadChar = '_';
+		CodepointSupport sps = CodepointSupport.BMP;
+		CharArray[] lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', leftPadChar, middlePadChar, sps);
+		System.out.println(CharArray.join(lines));
+	}
+
 	public CharArray[] underneath(final char[] arr, final int len, int from, int to, char marker, char leftPadChar,
 			char middlePadChar, CodepointSupport cps) {
 
@@ -208,10 +226,12 @@ public class LMark {
 		char padChar = leftPadChar;
 		boolean _middel_padding_ = false;
 		for (; i < lines.length; i++) {
-			index -= lineLenOriginal;
+			index -= lineLenOriginal;			
 			CharArray line = lines[i];
 			char[] lineArr = line.getArray();
-			lineLen = line.getLength();
+			lineLen = line.length();
+			//TODO: all_len incorrect calculation after padding middle
+			//check with test mark_underneeth_tests/block01-expected/18-34.expected
 			all_len += lineLenOriginal;
 //			lineLenOriginal = (i == lines.length - 1) ? lineLen+1 : lineLen + 1;
 			lineLenOriginal = lineLen + 1;
@@ -248,10 +268,11 @@ public class LMark {
 			// Case#1-Step[A] & Case#2-Step[C]
 			// Case#1-Step[B] & Case#2-Step[F]
 			// =============
-			int occupation = Lang.codepoint.count.ofColumns(lineArr, line.getLength(), start, end,
+			int occupation = Lang.codepoint.count.ofColumns(lineArr, line.length(), start, end,
 					Lang.constant.DEFAULT_TAB_SIZE, previousOccupations, cps);
 //				int occupation = end - start;
 			previousOccupations += occupation;
+			//TODO: improve allocation
 			lineArr = Lang.capacity.ensure(lineArr, lineLen, (lineLenOriginal * 2) + occupation, true);
 			if (occupation == 0 && lineLen == 0 && lineArr.length == 0) {
 				// double linefeed were here, the second has been considered as empty line
@@ -276,8 +297,7 @@ public class LMark {
 			lineLen = lineLen + occupation;
 			lineArr[lineLen++] = marker;
 
-			line.setArray(lineArr);
-			line.setLength(lineLen);
+			line = line.assign(lineArr, lineLen);
 
 			// ===============
 			// * If detected padChar = '_', means we are at the end of Step[B] or Step[F]
@@ -379,6 +399,9 @@ public class LMark {
 				// codes|abdullah
 				// ###^____^
 				// ===========
+				//TODO: this is wrong, check with test mark_underneeth_tests/block01-expected/18-34.expected
+				//on first mark (^), below counts columns count 1 only
+				//TODO: improve allocation
 				occupation = Lang.codepoint.count.ofColumns(lineArr, lineLen, start, end,
 						Lang.constant.DEFAULT_TAB_SIZE, previousOccupations, cps);
 //					occupation = end - start;
@@ -408,11 +431,10 @@ public class LMark {
 				lineArr = Lang.codepoint.repeat.in(lineArr, lineLen, padChar, occupation, lineLen, cps);
 //					lineArr = analogRepeat(lineArr, lineLen, lineArr, lineLen, start, end, padChar, lineLen);
 				lineLen = lineLen + occupation;
-				line.setArray(lineArr);
-				line.setLength(lineLen);
+				line = line.assign(lineArr, lineLen);
 				line = lines[++i];
 				lineArr = line.getArray();
-				lineLen = line.getLength();
+				lineLen = line.length();
 				index -= lineLenOriginal;
 				lineLenOriginal = (i == lines.length - 1) ? lineLen : lineLen + 1;
 				start = 0;
@@ -489,7 +511,7 @@ public class LMark {
 			all_len += i == 0 ? 0 : (lineLenOriginal + 1);
 			CharArray line = lines[i];
 			char[] lineArr = line.getArray();
-			lineLen = line.getLength();
+			lineLen = line.length();
 			lineLenOriginal = lineLen;
 			lastKnownIndex = -1;
 			sameLine = false;
@@ -565,8 +587,7 @@ public class LMark {
 				sameLine = true;
 				// -----------
 			}
-			line.setArray(lineArr);
-			line.setLength(lineLen);
+			line = line.assign(lineArr, lineLen);
 		}
 
 		return lines;

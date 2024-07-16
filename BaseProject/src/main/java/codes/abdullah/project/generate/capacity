@@ -1,0 +1,29 @@
+	/**
+	 * @see #ensure(XDoubleArray, int, YYY, int)
+	 */
+	public XZZZArray ensure(XZZZArray in, int required) {
+		return ensure(in, required, false);
+	}
+
+	/**
+	 * @see #ensure(XDoubleArray, int, YYY, int)
+	 */
+	public XZZZArray ensure(XZZZArray in, int required, boolean restrict_to_requirements) {
+		return ensure(in, required, restrict_to_requirements, Lang.constant.ARRAY_SAFE_CAPACITY);
+	}
+
+	/**
+	 * @see #ensure(XDoubleArray, int, YYY, int)
+	 */
+	public XZZZArray ensure(XZZZArray in, int required, boolean restrict_to_requirements, int max_allowed) {
+		YYY[] src = in.getArray();
+		int len = in.length();
+		if ((required - len) - (src.length - len) > 0) {
+			final int new_length = newCapacity(src.length, required, restrict_to_requirements, max_allowed);
+			Endian read = in.getEndian();
+			YYY[] alloc = read == null ? Lang.copy.to.that(src, len, new YYY[new_length], new_length) : 
+			Lang.copy.to.e.that(src, len, new YYY[new_length], new_length, 0, len, read, read);
+			return in.assign(alloc, new_length);
+		}
+		return in;
+	}

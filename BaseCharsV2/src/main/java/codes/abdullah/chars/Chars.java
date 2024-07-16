@@ -9,12 +9,12 @@ import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.function.BiPredicate;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.array.wrapper.codepoint.CodepointArray;
 import codes.abdullah.digits.Digits;
 import codes.abdullah.digits.java.JavaFloatingDecimal;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Endian;
 import codes.abdullah.project.Immutable;
 import codes.abdullah.project.lang.Lang;
@@ -135,8 +135,8 @@ public abstract class Chars
 		int spcount = cpa.getPairsCount();
 		char[] arr = cpa.safe();
 		CharArray result = Lang.codepoint.setWithReindexing(arr, alen, indexes, cp, cps);
-		spcount -= alen - result.getLength();
-		return assign(cpa.assign(result.getArray(), result.getLength(), spcount, cps));
+		spcount -= alen - result.length();
+		return assign(cpa.assign(result.getArray(), result.length(), spcount, cps));
 	}
 
 	// ================
@@ -1258,7 +1258,7 @@ public abstract class Chars
 		to += toDisp;
 		// ------------------
 		CharArray arr2 = Lang.codepoint.replace.all(arr, alen, target, replacement, from, to, flags, cps);
-		return assign(cpa.assign(arr2.getArray(), arr2.getLength()));
+		return assign(cpa.assign(arr2.getArray(), arr2.length()));
 	}
 
 	public Chars replaceAll(CharSequence target, CharSequence replacement) {
@@ -1299,7 +1299,7 @@ public abstract class Chars
 		to += toDisp;
 		// ------------------
 		CharArray arr2 = Lang.chararray.replace.all(arr, alen, tarr, tlen, rarr, rlen, from, to, flags, cps);
-		return assign(cpa.assign(arr2.getArray(), arr2.getLength()));
+		return assign(cpa.assign(arr2.getArray(), arr2.length()));
 	}
 
 	// ===============

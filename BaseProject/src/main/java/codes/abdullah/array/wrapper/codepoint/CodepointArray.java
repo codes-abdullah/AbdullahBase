@@ -2,8 +2,8 @@ package codes.abdullah.array.wrapper.codepoint;
 
 import java.io.Serializable;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Immutable;
 import codes.abdullah.project.lang.Lang;
 

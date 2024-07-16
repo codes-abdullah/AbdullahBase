@@ -1,5 +1,6 @@
 package codes.abdullah.project.lang.chars.chararray;
 
+import codes.abdullah.project.lang.LCopy;
 import codes.abdullah.project.lang.Lang;
 
 public class LSwap {
@@ -7,16 +8,21 @@ public class LSwap {
 
 	}
 
+	/**
+	 * Swap given codepoints based on their given length<br>
+	 * <b>Performance note</b>: This method involves {@link LCopy} operations couple
+	 * of times if rightLength != leftLength
+	 */
 	public char[] with(char[] arr, int len, int leftIndex, int leftLength, int rightIndex, int rightLength) {
 		if (leftLength == 1 && rightLength == 1) {
 			return Lang.codepoint.swap.with(arr, len, leftIndex, rightIndex);
-		}		
+		}
 		// =======================
 		// case1: codes.abdullah
 		// case2: codXXs.abdullXXh
 		// case3: codXXs.abdullah
 		// case4: codes.abdullXXh
-		
+
 		// =======================
 		// case-1 and case-2
 		if (leftLength == rightLength) {

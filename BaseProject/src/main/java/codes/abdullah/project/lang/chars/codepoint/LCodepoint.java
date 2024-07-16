@@ -1,8 +1,8 @@
 package codes.abdullah.project.lang.chars.codepoint;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 public class LCodepoint {
@@ -195,6 +195,7 @@ public class LCodepoint {
 	 * special tool for stepping, it helps to convert if step exceed max, i.e:
 	 * codes.abdullah, steps = 16, will return -2
 	 */
+	//TODO: is this works right ??
 	public int restep(int src_steps, int steps, int right_max, int left_max) {
 		if (src_steps > 0) {
 			// --------------------

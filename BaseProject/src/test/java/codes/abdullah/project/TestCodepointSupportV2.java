@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 //cod𐂽s.𐁕bdullah

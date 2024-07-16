@@ -1,7 +1,7 @@
 package codes.abdullah.project.lang.chars.codepoint;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.lang.chars.utils.CharsMatcher;
 

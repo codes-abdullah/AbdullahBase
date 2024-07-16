@@ -3,7 +3,7 @@ package codes.abdullah.project.lang.chars.chararray;
 import java.util.ArrayList;
 import java.util.List;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.lang.chars.utils.CharsLoop;
 import codes.abdullah.project.lang.chars.utils.CharsMatcher;

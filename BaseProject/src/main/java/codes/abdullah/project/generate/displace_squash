@@ -1,0 +1,61 @@
+	/**
+	 * @see #in(XDoubleArray, int, int, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement, int from, int to) {
+		return in(in, displacement, from, to, 0);
+	}
+
+	/**
+	 * @see #in(XDoubleArray, int, int, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement, int from, int to, int fromBorder) {
+		return in(in, displacement, from, to, fromBorder, in.length());
+	}
+
+	/**
+	 * @see #in(XDoubleArray, int, int, int, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, int displacement, int from, int to, int fromBorder, int toBorder) {
+		final YYY[] arr = in.getArray();
+		try {
+			boolean neg = displacement < 0;
+			displacement = Math.abs(displacement);
+			int from0 = from;
+			int to0 = to;
+			int bfrom0 = fromBorder;
+			int bto0 = toBorder;
+			int range = to0 - from0;
+			int max_displacement = bto0 - from0 - 1;
+			int copyinto = from0 + displacement;
+
+			if (in.isEndianSupported()) {
+				Endian read = in.getEndian();
+				neg = (read.isLittle() && displacement < 0) || (read.isBig() && displacement > 0);
+				int inlen = in.length();
+				from0 = read.from(from, to, inlen, arr.length);
+				to0 = read.to(from, to, inlen, arr.length);
+				bfrom0 = read.from(fromBorder, toBorder, inlen, arr.length);
+				bto0 = read.to(fromBorder, toBorder, inlen, arr.length);
+			}
+
+			int copyfrom = from0;
+			int remain = bto0 - (copyinto + range);
+			int copylen = Math.min(range, range + remain);
+			if (neg) {
+				max_displacement = to0 - bfrom0 - 1;
+				remain = from0 - bfrom0;
+				copyinto = from0 - displacement;
+				copylen = Math.min(range, range + (copyinto - bfrom0));
+				copyinto = Math.max(bfrom0, from0 - displacement);
+				copyfrom = to0 - copylen;
+			}
+
+			if (displacement > max_displacement)
+				return in.assign(arr);
+
+			System.arraycopy(arr, copyfrom, arr, copyinto, copylen);
+		} catch (Exception e) {
+			checkDisplacementException(e, in.getArray(), in.length(), displacement, from, to, fromBorder, toBorder, null);
+		}
+		return in.assign(arr);
+	}

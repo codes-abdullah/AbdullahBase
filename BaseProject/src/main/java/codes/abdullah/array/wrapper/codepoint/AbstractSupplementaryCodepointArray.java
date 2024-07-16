@@ -1,6 +1,6 @@
 package codes.abdullah.array.wrapper.codepoint;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 abstract class AbstractSupplementaryCodepointArray extends AbstractBmpCodepointArray implements CodepointArray {

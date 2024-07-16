@@ -2,8 +2,8 @@ package codes.abdullah.project.lang.chars.chararray;
 
 import java.util.Random;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.digits.Digits;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Endian;
 import codes.abdullah.project.lang.Lang;
 

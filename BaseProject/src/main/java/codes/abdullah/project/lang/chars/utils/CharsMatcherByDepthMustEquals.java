@@ -2,8 +2,8 @@ package codes.abdullah.project.lang.chars.utils;
 
 import java.util.Arrays;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 class CharsMatcherByDepthMustEquals extends CharsMatcherMustEquals implements CharsMatcherByDepth {

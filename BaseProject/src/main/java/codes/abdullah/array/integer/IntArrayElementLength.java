@@ -1,6 +1,6 @@
 package codes.abdullah.array.integer;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.Endian;
 
 /**

@@ -1,0 +1,30 @@
+	/**
+	 * @see #in(double[], int, double, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, YYY value) {
+		return in(in, value, 0);
+	}
+
+	/**
+	 * @see #in(double[], int, double, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, YYY value, int from) {
+		return in(in, value, from, in.length());
+	}
+
+	/**
+	 * @see #in(double[], int, double, int, int)
+	 */
+	public XZZZArray in(XZZZArray in, YYY value, int from, int to) {
+		final YYY[] arr = in.getArray();
+		final int inlen = in.length();
+		final Endian read = in.getEndian();
+		if (read != null) {
+			for (; from < to; from++)
+				arr[read.index(from, inlen, arr.length)] = value;
+		} else {
+			for (; from < to; from++)
+				arr[from] = value;
+		}
+		return in.assign(arr);
+	}

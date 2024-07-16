@@ -1,8 +1,8 @@
 package codes.abdullah.project.lang.chars.chararray;
 
-import codes.abdullah.array.chars.XCharArray;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
+import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 public class LChararray {
@@ -98,14 +98,14 @@ public class LChararray {
 				: Lang.copy.to.that(arr, alen, new char[alen], alen, from, to, 0);
 	}
 
-	public XCharArray newDefaultXCharArrayOrCopy(XCharArray xarr) {
-		return newDefaultXCharArrayOrCopy(xarr, 0, xarr.length());
+	public CharArray newDefaultCharArrayOrCopy(CharArray xarr) {
+		return newDefaultCharArrayOrCopy(xarr, 0, xarr.length());
 	}
 
-	public XCharArray newDefaultXCharArrayOrCopy(XCharArray xarr, int from, int to) {
+	public CharArray newDefaultCharArrayOrCopy(CharArray xarr, int from, int to) {
 		if (xarr == null || xarr.isEmpty()) {
 			char[] arr = newDefaultArray();
-			XCharArray out = XCharArray.of(arr, arr.length);
+			CharArray out = CharArray.of(arr, arr.length);
 			return xarr != null && xarr.isImmutable() ? out.toImmutable() : out;
 		}
 		return xarr.newClone();

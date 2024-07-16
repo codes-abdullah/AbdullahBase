@@ -2,14 +2,34 @@ package codes.abdullah.array.YYYs;
 
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.Immutable;
-
+import codes.abdullah.project.Endian;
 class XImmutableZZZArray extends AbstractXZZZArray {
 	private final YYY[] array;
 	private final int length;
+	private final Endian endian;
+	
+	XImmutableZZZArray(XZZZArray t) {
+		this.array = t.isImmutable() ? t.getArray() : Lang.copy.of.this_(t.getArray(), t.length());
+		this.length = t.length();
+		this.endian = t.getEndian();
+	}
 
-	XImmutableZZZArray(YYY[] array, int length) {
+	XImmutableZZZArray(YYY[] array, int length, Endian endian) {
 		this.array = Lang.copy.of.this_(array, length);
 		this.length = length;
+		this.endian = endian;
+	}
+	
+	
+	@Override
+	public XZZZArray setEndian(Endian e) {		
+		return new XImmutableZZZArray(array, length, endian);
+	}
+	
+	
+	@Override
+	public Endian getEndian() {
+		return endian;
 	}
 
 	@Override
@@ -19,11 +39,15 @@ class XImmutableZZZArray extends AbstractXZZZArray {
 	
 	@Override
 	public YYY getAt(int index) {
+		if(endian != null)
+			index = endian.index(index, length, array.length);
 		return array[index];
 	}
 
 	@Override
 	public XZZZArray setAt(int index, YYY value) {
+		if(endian != null)
+			index = endian.index(index, length, array.length);
 		YYY[] arr = getArray();
 		arr[index] = value;
 		return assign(arr, length());
@@ -38,15 +62,31 @@ class XImmutableZZZArray extends AbstractXZZZArray {
 	public int length() {
 		return length;
 	}
-
-	@Override
-	public XZZZArray assign(YYY[] array, int length) {
-		return new XImmutableZZZArray(array, length);
+	
+		@Override
+	public XZZZArray assign(YYY[] array) {			
+		return assign(array, array.length);
+	}
+	
+		@Override
+	public XZZZArray assign(YYY[] array, int length) {		
+		return assign(array, length, endian);
 	}
 
 	@Override
+	public XZZZArray assign(YYY[] array, int length, Endian endian) {
+		return new XImmutableZZZArray(array, length, endian);
+	}
+	
+	@Override
+	public XZZZArray assign(XZZZArray t) {		
+		return new XImmutableZZZArray(t);
+	}
+	
+
+	@Override
 	public XZZZArray newClone() {
-		return new XImmutableZZZArray(array, length);
+		return new XImmutableZZZArray(array, length, endian);
 	}
 
 	@Override
@@ -56,18 +96,18 @@ class XImmutableZZZArray extends AbstractXZZZArray {
 
 	@Override
 	public XZZZArray newInstance(YYY[] array, int length) {
-		return new XImmutableZZZArray(array, length);
+		return new XImmutableZZZArray(array, length, endian);
 	}
 
 	@Override
 	public XZZZArray toMutable() {
-		return new XMutableZZZArray(getArray(), length);
+		return new XMutableZZZArray(getArray(), length, endian);
 	}
 	
 		@Override
 	public XZZZArray newInstance(Immutable<?> i) {
 		YYY[] array = new YYY[Lang.constant.DEFAULT_ARRAY_CAPACITY];
-		return i.isImmutable() ? new XImmutableZZZArray(array, 0) :  new XMutableZZZArray(array, 0); 
+		return i.isImmutable() ? new XImmutableZZZArray(array, 0, endian) :  new XMutableZZZArray(array, 0, endian); 
 	}
 
 	@Override

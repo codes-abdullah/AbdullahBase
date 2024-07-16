@@ -1,8 +1,8 @@
 package codes.abdullah.chars;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.array.wrapper.codepoint.CodepointArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.ImplementationRequiredException;
 import codes.abdullah.project.lang.Lang;
 
@@ -113,7 +113,7 @@ public class MutableChars extends Chars {
 
 	@Override
 	CodepointArray newCodepointArray(CharArray ca) {
-		return cpa.newInstance(ca.getArray(), ca.getLength());
+		return cpa.newInstance(ca.getArray(), ca.length());
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 //TODO i wanted to generate testing files (03-29.expected) for LCharArray.Mark.underneeth testing
 

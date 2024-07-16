@@ -12,16 +12,22 @@ public interface CharArray extends Immutable<CharArray> {
 
 	char[] getArray();
 
-	int getLength();
+	int length();
 
-	@Deprecated
-	CharArray setArray(char[] array);
+	boolean isEmpty();
 
-	@Deprecated
-	CharArray setLength(int length);
+	CharArray assign(char[] array);
+
+	CharArray assign(int length);
 
 	CharArray assign(char[] array, int length);
 
+	CharArray newClone();
+	
+	CharArray newInstance();
+	
+	CharArray newInstance(char[] array);
+	
 	CharArray newInstance(char[] array, int length);
 
 	public static CharArray of(char[] array) {
@@ -33,7 +39,7 @@ public interface CharArray extends Immutable<CharArray> {
 	}
 
 	public static String join(CharArray[] lines) {
-		return Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		return Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 	}
 }

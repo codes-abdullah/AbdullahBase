@@ -1,7 +1,7 @@
 package codes.abdullah.project.lang;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Endian;
 
 public class LFill {

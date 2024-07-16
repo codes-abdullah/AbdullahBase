@@ -1,0 +1,39 @@
+/**
+	 * @see #that(double[], int, double[], int, int, int, int)
+	 */
+	public boolean[] that(boolean[] in, int inlen, boolean[] out, int outlen) {
+		return that(in, inlen, out, outlen, 0);
+	}
+
+	/**
+	 * @see #that(double[], int, double[], int, int, int, int)
+	 */
+	public boolean[] that(boolean[] in, int inlen, boolean[] out, int outlen, int from) {
+		return that(in, inlen, out, outlen, from, inlen);
+	}
+
+	/**
+	 * @see #that(double[], int, double[], int, int, int, int)
+	 */
+	public boolean[] that(boolean[] in, int inlen, boolean[] out, int outlen, int from, int to) {
+		return that(in, inlen, out, outlen, from, to, 0);
+	}
+
+	/**
+	 * @see #that(double[], int, double[], int, int, int, int)
+	 */
+	public boolean[] that(boolean[] in, int inlen, boolean[] out, int outlen, int from, int to, int writeAtIndex) {
+		if (inlen == 0) {
+			return out;
+		}
+		to = Math.min(inlen, to);
+		final int copylen = Math.min(inlen, to - from);
+		final int rf = from;
+		final int wat = writeAtIndex;
+		try {
+			System.arraycopy(in, rf, out, wat, copylen);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			checkCopyThrowedReason(e, in, inlen, from, to, out, outlen, writeAtIndex, copylen);
+		}
+		return out;
+	}

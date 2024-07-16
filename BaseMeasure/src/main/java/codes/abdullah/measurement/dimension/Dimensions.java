@@ -1,7 +1,7 @@
 package codes.abdullah.measurement.dimension;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.measurement.dimension.convert.DimensionConverters;
-import codes.abdullah.project.CodepointSupport;
 
 /**
  * Source: <br>

@@ -1,0 +1,27 @@
+	/**
+	 * @see #at(double[], int, int, int)
+	 */
+	public XZZZArray at(XZZZArray in, int index, int size) {
+		final YYY[] arr = in.getArray();
+		final int inlen = in.length();
+		final Endian read = in.getEndian();
+		try {
+			int disp = inlen - index;
+			int from0 = index;
+			int into0 = from0 + size;
+			int from = from0;
+			int into = into0;
+			if (in.isEndianSupported()) {
+				disp = inlen - index;
+				from0 = index;
+				int to0 = index + disp;
+				into0 = from0 + size;
+				from = read.from(from0, to0, inlen, arr.length);
+				into = read.insertIndex(into0, inlen, arr.length, disp);
+			}
+			System.arraycopy(arr, from, arr, into, disp);
+		} catch (Exception e) {
+			throw checkException(e, arr.length, inlen, index, size);
+		}
+		return in.assign(arr);
+	}

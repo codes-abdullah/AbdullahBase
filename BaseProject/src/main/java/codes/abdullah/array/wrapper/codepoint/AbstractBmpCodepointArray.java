@@ -1,7 +1,7 @@
 package codes.abdullah.array.wrapper.codepoint;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 abstract class AbstractBmpCodepointArray implements CodepointArray {
@@ -22,12 +22,12 @@ abstract class AbstractBmpCodepointArray implements CodepointArray {
 
 	@Override
 	public CodepointArray newInstance(CharArray ca) {
-		return newInstance(ca.getArray(), ca.getLength());
+		return newInstance(ca.getArray(), ca.length());
 	}
 
 	@Override
 	public CodepointArray assign(CharArray ca) {
-		return assign(ca.getArray(), ca.getLength());
+		return assign(ca.getArray(), ca.length());
 	}
 
 	@Override

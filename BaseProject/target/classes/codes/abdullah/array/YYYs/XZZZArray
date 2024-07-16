@@ -5,11 +5,13 @@ import java.util.stream.Collectors;
 import codes.abdullah.project.Immutable;
 import codes.abdullah.array.XArray;
 import codes.abdullah.project.lang.Lang;
+import codes.abdullah.project.Endian;
 
 /**
  * Simple wrapper to implement mutability/immutability
  */
 public interface XZZZArray extends XArray<XZZZArray> {
+
 
 	YYY[] getArray();
 	
@@ -17,7 +19,9 @@ public interface XZZZArray extends XArray<XZZZArray> {
 	
 	XZZZArray setAt(int index, YYY value);
 
+	XZZZArray assign(YYY[] array);
 	XZZZArray assign(YYY[] array, int length);
+	XZZZArray assign(YYY[] array, int length, Endian endian);
 
 	XZZZArray newInstance(YYY[] array, int length);
 	
@@ -38,10 +42,17 @@ public interface XZZZArray extends XArray<XZZZArray> {
 	public static XZZZArray of(YYY[] array) {
 		return of(array, array.length);
 	}
-
+	
 	public static XZZZArray of(YYY[] array, int length) {
-		return new XMutableZZZArray(array, length);
+		return of(array, length, null);
 	}
+
+
+	public static XZZZArray of(YYY[] array, int length, Endian endian) {
+		return new XMutableZZZArray(array, length, endian);
+	}
+	
+	
 
 	public static String join(XZZZArray[] arrays) {
 		return Arrays.stream(arrays).map(array -> array.toString())

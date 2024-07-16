@@ -16,13 +16,13 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.text.Caret;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 
-public class CropTextJFrame extends JFrame {
+class CropTextJFrame extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
@@ -82,7 +82,7 @@ public class CropTextJFrame extends JFrame {
 				int fromDisp = cps.extendablePairsCount(arr, len, 0, targetIndex);
 				targetIndex += fromDisp;
 				CharArray[] cl = Lang.chararray.crop.in(arr, len, targetIndex, columns, rows, cps);
-				String sw = Arrays.stream(cl).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+				String sw = Arrays.stream(cl).map(ca -> new String(ca.getArray(), 0, ca.length()))
 						.collect(Collectors.joining("\n"));
 
 				left.setText(sw);

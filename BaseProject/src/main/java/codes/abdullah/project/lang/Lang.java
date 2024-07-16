@@ -32,20 +32,73 @@ import javafx.print.Collation;
  * array by invoking {@link LCapacity} or by reallocate it, in both ways<br>
  */
 
-//TODO all ranges/indexes in Lang impla must be in actual-level, including special implas
-//TODO special implementations such LChararray and LCodepoint must relay on CodepointCounter and not CodepointSupport while reindexing
-//TODO LCompare should support ranges and case-sensitive for char[]
-//TODO LEqual should support ranges and case-sensitive for char[]
-//TODO LHashCode should support ranges 
-//TODO LCount must have count matches, repeat and occupied
-//TODO remove reindexing from LMark
-//TODO LRemove 	- fix, not working if delif = 1 and targetLen=1
-//TODO LCodepoint set indexes, document the reindex if visual or actual level
-//TODO complete LReplace using displace
-//TODO LReplace must support replaceByRegex !!
-//TODO implement LDisplaceStep LDisplaceSlide
-//TODO LPrimitive lengthOf + tests
-//TODO methods does alter/convert original array, can't tell what is the newlen
+//TODO: all ranges/indexes in Lang impla must be in actual-level, including special implas
+//TODO: special implementations such LChararray and LCodepoint must relay on CodepointCounter and not CodepointSupport while reindexing
+//TODO: LCompare should support ranges and case-sensitive for char[]
+//TODO: LEqual should support ranges and case-sensitive for char[]
+//TODO: LHashCode should support ranges 
+//TODO: LCount must have count matches, repeat and occupied
+//TODO: remove reindexing from LMark
+//TODO: LCodepoint set indexes, document the reindex if visual or actual level
+//TODO: complete LReplace using displace
+//TODO: LReplace must support replaceByRegex !!
+//###########################################################
+//TODO: codes.abdullah.project.lang.LDisplaceStep
+//TODO: codes.abdullah.project.lang.LDisplaceSlide
+//TODO: LPrimitive lengthOf + tests
+//TODO: methods does alter/convert original array, can't tell what is the newlen
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LRemove
+//TODO: what is this ?? fix, not working if delif = 1
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LRange
+//TODO: needs to be implemented
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LMark
+//TODO: what is this ?? remove reindexing
+//TODO: what is this ?? implement same as the top method
+//TODO: improve allocation
+//TODO: create more test in src/test/resources/mark_underneeth_tests/block01-expected/
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LCrop
+//TODO: is totally relaying on CharArray[], replace by XCharArray and try to find batter implementation
+//TODO: needs tests
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LChararray
+//TODO: remove computeHash()
+//TODO: do we need offsetByCodePoints() ?? remove or find other place
+//TODO:
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.chararray.LEnds
+//TODO: codes.abdullah.project.lang.chars.chararray.LStarts
+//TODO: we need range supoort
+//########################################################### 
+//TODO: codes.abdullah.project.lang.chars.chararray.LBlock
+//TODO: needs to complete implementation
+//TODO: needs tests
+//TODO:
+//###########################################################
+//TODO: codes.abdullah.project.lang.chars.codepoint.LCodepoint
+//TODO: what is is this works right ??
+//########################################################### 
+//TODO: codes.abdullah.project.lang.chars.utils.CharsScanner
+//TODO: what is this for??
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+//TODO: 
+
 public class Lang {
 
 	/**

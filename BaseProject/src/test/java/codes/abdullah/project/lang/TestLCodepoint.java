@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 
 public class TestLCodepoint {
 
@@ -333,7 +333,7 @@ public class TestLCodepoint {
 		to = len;
 		expected = "codes.XbdullXh".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'a';
@@ -342,7 +342,7 @@ public class TestLCodepoint {
 		to = len;
 		expected = "codes.abdullXh".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'l';
@@ -351,7 +351,7 @@ public class TestLCodepoint {
 		to = len;
 		expected = "codes.abduXXah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'l';
@@ -360,7 +360,7 @@ public class TestLCodepoint {
 		to = len;
 		expected = "codes.abdulXah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// =================
 		// =================
@@ -388,7 +388,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7duXXaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("B7");
@@ -404,7 +404,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6XdullaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = 'l';
@@ -420,7 +420,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7duZ7Z7aH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("H3");
@@ -436,7 +436,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7dullaZ7".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("H3");
@@ -452,7 +452,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7dullaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 	}
 
@@ -480,7 +480,7 @@ public class TestLCodepoint {
 		expected = "codes.C++bdullC++h".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'a';
@@ -489,7 +489,7 @@ public class TestLCodepoint {
 		expected = "codes.abdullC++h".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'l';
@@ -498,7 +498,7 @@ public class TestLCodepoint {
 		expected = "codes.abduC++C++ah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		target = 'l';
@@ -507,7 +507,7 @@ public class TestLCodepoint {
 		expected = "codes.abdulC++ah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ===========================
 		// ===========================
@@ -524,14 +524,14 @@ public class TestLCodepoint {
 		expected = "codes.abdu++ah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 		// ===========================
 		from = 11;
 		to = len;
 		expected = "codes.abdul+ah".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, len), len, target, replacement, rlen, from, to, 0,
 				cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// =================
 		// =================
@@ -559,7 +559,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7duXXaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, rlen, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("B7");		
@@ -574,7 +574,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6XdullaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, rlen, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = 'l';
@@ -591,7 +591,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7duZ7Z7aH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, rlen, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("H3");
@@ -608,7 +608,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7dullaZ7".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, rlen, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 
 		// ====================
 		target = cps.toCodepoint("H3");
@@ -625,7 +625,7 @@ public class TestLCodepoint {
 		// -------------------
 		expected = "C0oD2es.A6B7dullaH3".toCharArray();
 		result = Lang.codepoint.replace.all(Lang.copy.of.this_(arr, alen), alen, target, replacement, rlen, from, to, 0, cps);
-		assertEquals(new String(expected), new String(result.getArray(), 0, result.getLength()));
+		assertEquals(new String(expected), new String(result.getArray(), 0, result.length()));
 	}
 
 }

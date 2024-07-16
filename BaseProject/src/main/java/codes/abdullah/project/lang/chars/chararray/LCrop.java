@@ -1,7 +1,7 @@
 package codes.abdullah.project.lang.chars.chararray;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 import codes.abdullah.project.lang.chars.utils.CharsMatcher;
 
@@ -129,30 +129,29 @@ public class LCrop {
 		int inlineColumnIndex = 0;
 		for (int i = 0; i < cropLines.length; i++) {
 			CharArray ca = cropLines[i];
-			lengthSofar = (lengthSum + ca.getLength() + 1);
+			lengthSofar = (lengthSum + ca.length() + 1);
 			if (lengthSofar > targetIndex) {
 				targetIndex -= lengthSum;
-				inlineColumnIndex = Lang.codepoint.column.from(ca.getArray(), ca.getLength(), targetIndex,
+				inlineColumnIndex = Lang.codepoint.column.from(ca.getArray(), ca.length(), targetIndex,
 						Lang.constant.DEFAULT_TAB_SIZE, cps);
 				break;
 			}
-			lengthSum += ca.getLength() + 1;
+			lengthSum += ca.length() + 1;
 		}
 
 		int addition = LEllipse.DEFAULT_ELLIPSE_MARKER.length * 2;
 		for (int i = 0; i < cropLines.length; i++) {
 			CharArray ca = cropLines[i];
 			char[] arr0 = ca.getArray();
-			int len0 = ca.getLength();
+			int len0 = ca.length();
 			CharArray arr00 = Lang.codepoint.replace.tabs(arr0, len0, '-', 0, arr0.length,
 					Lang.constant.DEFAULT_TAB_SIZE, cps);
 			arr0 = arr00.getArray();
-			len0 = arr00.getLength();
+			len0 = arr00.length();
 			int newlen = Lang.chararray.ellipse.lengthOf.middle(arr0, len0, columns, inlineColumnIndex);
 			arr0 = Lang.capacity.ensure(arr0, len0, newlen + addition);
 			arr0 = Lang.chararray.ellipse.middle(arr0, len0, columns, inlineColumnIndex);
-			ca = ca.setArray(arr0);
-			ca = ca.setLength(newlen);
+			ca = ca.assign(arr0, newlen);			
 		}
 		return cropLines;
 	}

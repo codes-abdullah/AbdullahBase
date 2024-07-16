@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.Endian;
 
 public class LPrimitiveTo {

@@ -1,8 +1,8 @@
 package codes.abdullah.chars;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.digits.Digits;
 import codes.abdullah.project.Check;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 public abstract class CharsFill {

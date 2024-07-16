@@ -1,0 +1,20 @@
+	/**
+	 * @see #isValidRange(YYY, YYY, YYY, YYY)
+	 */
+	public static boolean isValidRange(YYY from, YYY to) {
+		return isValidRange(from, to, ZZZ.MAX_VALUE);
+	}
+
+	/** 
+	 * @see #isValidRange(YYY, YYY, YYY, YYY)
+	 */
+	public static boolean isValidRange(YYY from, YYY to, YYY max) {
+		return isValidRange(from, to, max, 0);
+	}
+
+	/**
+	 * @return true if from >= min && from < to && to < max
+	 */
+	public static boolean isValidRange(YYY from, YYY to, YYY max, YYY min) {
+		return from >= min && from < to && to <= max;
+	}

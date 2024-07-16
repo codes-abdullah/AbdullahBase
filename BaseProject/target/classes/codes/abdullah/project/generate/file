@@ -23,22 +23,20 @@ public XZZZArray YYYs(XByteArray in, int from, int to) {
 	 * @see #longs(XByteArray, int, int, XLongArray)
 	 */
 public XZZZArray YYYs(XByteArray in, int from, int to, XZZZArray out) {
-		int inlen = to - from;
+		final int inlen = to - from;
 		final int _in_size = Byte.SIZE;
 		final int _out_size = ZZZ.SIZE;
 		final int parts = _out_size / _in_size;
 		final int arr_out_len = (inlen + (parts - 1)) / parts;
 		final YYY mask = (1 << _in_size) - 1;
-		XZZZArray was = out;
-		out = out.toMutable().ensureCapacity(arr_out_len);
-		YYY[] outarr = out.getArray();
+		final XZZZArray tmp_out = out.toMutable().ensureCapacity(arr_out_len);
 		YYY tmp = 0;
 		for (int i = 0; i < arr_out_len; i++) {
 			tmp = (YYY) (in.getAt(from++) & mask);
 			for (int j = 1; j < parts && from < to; j++) {
 				tmp |= (((YYY) (in.getAt(from++) & mask)) << _in_size * j);
 			}
-			outarr[i] |= tmp;
+			tmp_out.setAt(i, tmp);
 		}
-		return was.assign(outarr, out.length());
+		return out.assign(tmp_out);
 }

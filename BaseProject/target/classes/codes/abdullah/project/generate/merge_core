@@ -1,0 +1,20 @@
+
+
+	/** @see #longs(XLongArray, XLongArray) */
+	public XZZZArray YYYs(XZZZArray in, XZZZArray with) {
+		final int inlen = in.length();
+		final int withlen = with.length();
+		final int outlen = inlen + withlen;
+		YYY[] out = in.toMutable().ensureCapacity(outlen).getArray();
+		if (in.isEndianSupported()) {
+			Endian read = in.getEndian();
+			Endian write = with.getEndian();
+			write = write == null ? read : write;
+			out = Lang.copy.to.e.that(with.getArray(), withlen, out, outlen, 0, withlen, read, write, inlen);
+			return in.assign(out, outlen);
+		}
+		out = Lang.copy.to.that(with.getArray(), withlen, out, outlen, 0, withlen, inlen);
+		return in.assign(out, outlen);
+	}
+
+	

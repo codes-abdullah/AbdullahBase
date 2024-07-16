@@ -1,0 +1,5 @@
+
+	/** @see #longs(XLongArray, XIntArray) */
+	public XZZZArray YYYs(XZZZArray in, XFFFArray with) {
+		return YYYs(in, LangV2.binary.to.YYYs(with));
+	}

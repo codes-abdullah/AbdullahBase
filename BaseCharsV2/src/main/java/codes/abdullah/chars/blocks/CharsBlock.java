@@ -5,9 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.chars.Chars;
 import codes.abdullah.digits.Range;
-import codes.abdullah.project.CodepointSupport;
 import codes.abdullah.project.lang.Lang;
 
 public class CharsBlock {

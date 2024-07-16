@@ -6,7 +6,10 @@ public abstract class AbstractXZZZArray implements XZZZArray {
 
 	abstract YYY[] unsafe();
 	
-
+	@Override
+	public boolean isEndianSupported() {
+		return getEndian() != null;
+	}	
 
 	@Override
 	public boolean isEmpty() {

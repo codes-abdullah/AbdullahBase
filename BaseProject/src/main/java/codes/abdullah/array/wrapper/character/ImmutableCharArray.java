@@ -17,20 +17,25 @@ class ImmutableCharArray implements CharArray {
 	}
 
 	@Override
-	public int getLength() {
+	public int length() {
 		return length;
 	}
 
 	@Override
-	public CharArray setArray(char[] array) {
-		return new ImmutableCharArray(array, length);
+	public boolean isEmpty() {
+		return length == 0;
 	}
 
 	@Override
-	public CharArray setLength(int length) {
-		return new ImmutableCharArray(array, length);
+	public CharArray assign(char[] array) {
+		return assign(array, length);
 	}
-	
+
+	@Override
+	public CharArray assign(int length) {
+		return assign(array, length);
+	}
+
 	@Override
 	public CharArray assign(char[] arr, int len) {
 		return new ImmutableCharArray(arr, len);
@@ -40,7 +45,23 @@ class ImmutableCharArray implements CharArray {
 	public CharArray toImmutable() {
 		return this;
 	}
-	
+
+	@Override
+	public CharArray newClone() {
+		return new ImmutableCharArray(array, length);
+	}
+
+	@Override
+	public CharArray newInstance() {
+		char[] array = Lang.chararray.newDefaultArray();
+		return newInstance(array, 0);
+	}
+
+	@Override
+	public CharArray newInstance(char[] array) {
+		return newInstance(array, array.length);
+	}
+
 	@Override
 	public CharArray newInstance(char[] array, int length) {
 		return new ImmutableCharArray(array, length);

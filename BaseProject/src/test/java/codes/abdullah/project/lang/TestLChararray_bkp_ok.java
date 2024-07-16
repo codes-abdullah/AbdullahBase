@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.digits.Digits;
-import codes.abdullah.project.CodepointSupport;
 
 public class TestLChararray_bkp_ok {
 	@Test
@@ -73,7 +73,7 @@ public class TestLChararray_bkp_ok {
 		to = 4;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "^___^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -83,7 +83,7 @@ public class TestLChararray_bkp_ok {
 		to = 13;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "     ^_______^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -93,7 +93,7 @@ public class TestLChararray_bkp_ok {
 		to = 1;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -103,7 +103,7 @@ public class TestLChararray_bkp_ok {
 		to = 5;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "    ^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -113,7 +113,7 @@ public class TestLChararray_bkp_ok {
 		to = 13;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "            ^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -129,7 +129,7 @@ public class TestLChararray_bkp_ok {
 		to = 1;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^_______^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -139,7 +139,7 @@ public class TestLChararray_bkp_ok {
 		to = 2;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -149,7 +149,7 @@ public class TestLChararray_bkp_ok {
 		to = 2;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "        ^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -159,7 +159,7 @@ public class TestLChararray_bkp_ok {
 		to = 5;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "        ^___^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -169,7 +169,7 @@ public class TestLChararray_bkp_ok {
 		to = 9;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^_________________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -179,7 +179,7 @@ public class TestLChararray_bkp_ok {
 		to = 15;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "            ^______________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -189,7 +189,7 @@ public class TestLChararray_bkp_ok {
 		to = 12;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "                    ^___^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -199,7 +199,7 @@ public class TestLChararray_bkp_ok {
 		to = 16;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "                           ^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -212,7 +212,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes		abdu		llah	\n"//
 				+ "          ^_____________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -225,7 +225,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes		abdu		llah	\n"//
 				+ "             ^__________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -238,7 +238,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes		abdu		llah	\n"//
 				+ "                ^_______________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -251,7 +251,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "	codes		abdu		llah	\n"//
 				+ "           ^______________________________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -270,7 +270,7 @@ public class TestLChararray_bkp_ok {
 				+ "^_____\n"//
 				+ "abdullah\n"//
 				+ "^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -283,7 +283,7 @@ public class TestLChararray_bkp_ok {
 				+ "    ^_\n"//
 				+ "abdullah\n"//
 				+ "____^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -296,7 +296,7 @@ public class TestLChararray_bkp_ok {
 				+ "     ^\n"//
 				+ "abdullah\n"//
 				+ "^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -308,7 +308,7 @@ public class TestLChararray_bkp_ok {
 		expected = "codes\n"//
 				+ "abdullah\n"//
 				+ "^___^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -320,7 +320,7 @@ public class TestLChararray_bkp_ok {
 		expected = "codes\n"//
 				+ "abdullah\n"//
 				+ "   ^___^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -330,7 +330,7 @@ public class TestLChararray_bkp_ok {
 		to = 13;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes\n" + "^_____\n" + "abdullah\n" + "_______^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -340,7 +340,7 @@ public class TestLChararray_bkp_ok {
 		to = 13;
 		lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', ' ', '_', sps);
 		expected = "codes\n" + "abdullah\n" + "      ^^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -356,7 +356,7 @@ public class TestLChararray_bkp_ok {
 				+ "_\n"//
 				+ "abdullah\n"//
 				+ "_^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -375,7 +375,7 @@ public class TestLChararray_bkp_ok {
 				+ "\n"//
 				+ "_\n"//
 				+ "abdullah\n" + "_^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -397,7 +397,7 @@ public class TestLChararray_bkp_ok {
 				+ "java\n"//
 				+ "_^\n"//
 				+ "c++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -416,7 +416,7 @@ public class TestLChararray_bkp_ok {
 				+ "_____\n"//
 				+ "c++\n"//
 				+ "^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -434,7 +434,7 @@ public class TestLChararray_bkp_ok {
 				+ "_____\n"//
 				+ "c++\n"//
 				+ "_^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -452,7 +452,7 @@ public class TestLChararray_bkp_ok {
 				+ "java\n"//
 				+ "____^\n"//
 				+ "c++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -470,7 +470,7 @@ public class TestLChararray_bkp_ok {
 				+ "_____\n"//
 				+ "c++\n"//
 				+ "__^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -489,7 +489,7 @@ public class TestLChararray_bkp_ok {
 				+ "_____\n"//
 				+ "c++\n"//
 				+ "_^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -510,7 +510,7 @@ public class TestLChararray_bkp_ok {
 				+ "abdu	lah\n"//
 				+ "ja	a\n"//
 				+ "	++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -526,7 +526,7 @@ public class TestLChararray_bkp_ok {
 				+ "^_________^\n"//
 				+ "ja	a\n" //
 				+ "	++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -542,7 +542,7 @@ public class TestLChararray_bkp_ok {
 				+ "________^\n"//
 				+ "ja	a\n"//
 				+ "	++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -559,7 +559,7 @@ public class TestLChararray_bkp_ok {
 				+ "ja	a\n"//
 				+ "________^\n"//
 				+ "	++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -574,7 +574,7 @@ public class TestLChararray_bkp_ok {
 				+ "ja	a\n"//
 				+ "  ^______^\n"//
 				+ "	++";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -592,7 +592,7 @@ public class TestLChararray_bkp_ok {
 				+ "__________\n"//
 				+ "	++\n"//
 				+ "_________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -622,7 +622,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -648,7 +648,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -674,7 +674,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -700,7 +700,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -726,7 +726,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -752,7 +752,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -778,7 +778,7 @@ public class TestLChararray_bkp_ok {
 				+ "A6bD8u	lA9h\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -805,7 +805,7 @@ public class TestLChararray_bkp_ok {
 				+ "___^\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -832,7 +832,7 @@ public class TestLChararray_bkp_ok {
 				+ "_____^\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -859,7 +859,7 @@ public class TestLChararray_bkp_ok {
 				+ "________^\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -887,7 +887,7 @@ public class TestLChararray_bkp_ok {
 				+ "J2a	a\n"//
 				+ "___^\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -913,7 +913,7 @@ public class TestLChararray_bkp_ok {
 				+ "  ^______^\n"//
 				+ "J2a	a\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -940,7 +940,7 @@ public class TestLChararray_bkp_ok {
 				+ "J2a	a\n"//
 				+ "^\n"//
 				+ "	C1C2";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -963,7 +963,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, alen, from, to, '^', ' ', '_', sps);
 		expected = "	cO4d	s\n" + "A6bD8u	lA9h\n" + "           ^_\n" + "J2a	a\n" + "__________\n" + "	C1C2\n"
 				+ "__________^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 	}
@@ -984,7 +984,7 @@ public class TestLChararray_bkp_ok {
 		int[] indexes = new int[] { 0, 4, 8, 10 };
 		CharArray[] lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		String expected = "codes.abdullah\n" + "^___^___^_^";
-		String result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		String result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -993,7 +993,7 @@ public class TestLChararray_bkp_ok {
 		indexes = Digits.ints.range(len);
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "^^^^^^^^^^^^^^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1002,7 +1002,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 13 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "codes.abdullah\n" + "_____________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1017,7 +1017,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 0 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1028,7 +1028,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 4 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "___________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1039,7 +1039,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 10 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "___________________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1050,7 +1050,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 0, 4, 8, 10 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^__________^_____^_^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1061,7 +1061,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 0, 4, 8, 10, 14 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "^__________^_____^_^______^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1072,7 +1072,7 @@ public class TestLChararray_bkp_ok {
 		indexes = new int[] { 15 };
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes	abdu	llah	\n" + "___________________________^";
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1099,7 +1099,7 @@ public class TestLChararray_bkp_ok {
 				+ "\n"//
 				+ "\n"//
 				+ "i-love-java";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1120,7 +1120,7 @@ public class TestLChararray_bkp_ok {
 				+ "\n"//
 				+ "i-love-java\n"//
 				+ "______^_^_^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1144,7 +1144,7 @@ public class TestLChararray_bkp_ok {
 				+ "\n"//
 				+ "i-love-java\n"//
 				+ "______^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1162,7 +1162,7 @@ public class TestLChararray_bkp_ok {
 		lines = Lang.chararray.mark.underneath(arr, len, indexes, '^', ' ', '_', sps);
 		expected = "	codes\n" + "________^\n" + "abd		ulla	h\n" + "\n" + "java\n" + "	c+	+\n" + "R\n"
 				+ "ru	st\n" + "\n" + "\n" + "i-l		ove	-java";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1184,7 +1184,7 @@ public class TestLChararray_bkp_ok {
 				+ "\n"//
 				+ "\n"//
 				+ "i-l		ove	-java";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 
@@ -1213,7 +1213,7 @@ public class TestLChararray_bkp_ok {
 				+ "^\n"//
 				+ "i-l		ove	-java\n"//
 				+ "___^____^__________^____^";//
-		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.getLength()))
+		result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 				.collect(Collectors.joining("\n"));
 		assertEquals(expected, result);
 	}

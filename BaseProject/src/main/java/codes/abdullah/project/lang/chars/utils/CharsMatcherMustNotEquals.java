@@ -1,6 +1,6 @@
 package codes.abdullah.project.lang.chars.utils;
 
-import codes.abdullah.project.CodepointSupport;
+import codes.abdullah.array.codepoints.support.CodepointSupport;
 
 class CharsMatcherMustNotEquals extends CharsMatcherMustEquals {
 

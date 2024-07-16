@@ -1,0 +1,68 @@
+
+	/**
+	 * @see #longs(XLongArray, int, int, XIntArray)
+	 */
+	public XOUTPUT xoutputs(xinput n, XOUTPUT out) {
+		if (n == 0) {
+			return out;
+		}
+		final int wordsInUse = INPUT_WRAPPER.SIZE / OUTPUT_WRAPPER.SIZE;
+		int index = 0;
+		XOUTPUT tmp_out = out.toMutable().ensureCapacity(wordsInUse);
+		for (int j = 0; j < wordsInUse; j++) {
+			tmp_out.setAt(index++, (xoutput) n);
+			n >>>= OUTPUT_WRAPPER.SIZE;
+		}
+		return out.assign(tmp_out);
+	}
+	
+	/**
+	 * @see #longs(XLongArray, int, int, XIntArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in) {
+		return xoutputs(in, 0);
+	}
+	
+	/**
+	 * @see #longs(XLongArray, int, int, XIntArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from) {
+		return xoutputs(in, from, in.length());
+	}
+	
+	/**
+	 * @see #longs(XLongArray, int, int, XIntArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from, int to) {
+		return xoutputs(in, from, to, XOUTPUT.of());
+	}
+
+	/**
+	 * @see #longs(XLongArray, int, int, XIntArray)
+	 */
+	public XOUTPUT xoutputs(XINPUT in, int from, int to, XOUTPUT out) {
+		final int _out_size = OUTPUT_WRAPPER.SIZE;
+		final int _outputs_per_input = INPUT_WRAPPER.SIZE / _out_size;
+		final int _out_mask = (1 << _out_size) - 1;
+		final int _in_mask = (1 << INPUT_WRAPPER.SIZE) - 1;
+		final int inlen = to - from;
+		int count = _outputs_per_input * inlen;
+		XOUTPUT tmp_out = out.toMutable().ensureCapacity(count);
+		int outindex = 0, atOut, atIn;
+		xinput tmp = 0;
+		for (; from < to - 1; from++) {
+			atIn = from;
+			tmp = in.getAt(atIn);
+			for (int j = 0; j < _outputs_per_input; j++) {
+				atOut = j + outindex;
+				tmp_out.setAt(atOut, (xoutput) tmp);
+				tmp = (xinput) (_in_mask & (tmp >>> _out_size));
+			}
+			outindex += _outputs_per_input;
+		}
+		for (xinput x = in.getAt(to - 1); x != 0; x = (xinput) ((_in_mask & x) >>> _out_size)) {
+			atOut = outindex++;
+			tmp_out.setAt(atOut, (xoutput) (x & _out_mask));
+		}
+		return out.assign(tmp_out);
+	}
