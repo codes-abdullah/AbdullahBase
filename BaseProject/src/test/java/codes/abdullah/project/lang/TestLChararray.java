@@ -4,14 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.FileVisitResult;
-import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -19,6 +20,7 @@ import org.junit.Test;
 import codes.abdullah.array.codepoints.support.CodepointSupport;
 import codes.abdullah.array.wrapper.character.CharArray;
 import codes.abdullah.digits.Digits;
+import codes.abdullah.digits.Range;
 
 public class TestLChararray {
 	@Test
@@ -59,6 +61,87 @@ public class TestLChararray {
 	}
 
 	@Test
+	public void testBlock() throws IOException, URISyntaxException {
+		int i = 1;
+		// ===================
+		// mode="global",esc='\',prefix='{',suffix='}'
+		// ===================
+		String[] metadataTokensQuets = { "\"", "'", "'", "'" };
+		while (true) {
+			String num = Digits.numbers.considerZeroing(i++, 2);
+			URL res = TestLChararray.class.getResource("/block_test/block" + num + ".input");
+			if (res == null)
+				break;
+			Path srcBlock = Paths.get(res.toURI());
+			List<String> l = Files.readAllLines(srcBlock);
+			String metadata = l.get(0);
+
+			String[] tokens = metadata.split("[,]");
+			if (tokens.length != metadataTokensQuets.length)
+				throw new IllegalStateException();
+			for (int j = 0; j < tokens.length; j++) {
+				char[] tarr = tokens[j].toCharArray();
+				int tlen = tarr.length;
+				char[] m = metadataTokensQuets[j].toCharArray();
+				tokens[j] = new String(Lang.chararray.sub.between(tarr, tlen, m, m.length, m, m.length));
+			}
+
+			final CodepointSupport sps = CodepointSupport.BMP;
+			final boolean globalMode = tokens[0].equals("global");
+			final int esc = sps.getCodepoint(tokens[1], 0);
+			final int prefix = sps.getCodepoint(tokens[2], 0);
+			final int suffix = sps.getCodepoint(tokens[3], 0);
+
+			l.remove(0);
+			final char[] src = l.stream().collect(Collectors.joining("\n")).toCharArray();
+			final int len = src.length;
+
+			// =================
+			Path expectedDir = srcBlock.getParent().resolve("block01-expected");
+			Files.walkFileTree(expectedDir, new SimpleFileVisitor<Path>() {
+				@Override
+				public FileVisitResult visitFile(Path expectedBlock, BasicFileAttributes attrs) throws IOException {
+
+					System.out.println(expectedBlock);
+
+					String name = expectedBlock.getFileName().toString();
+					int x = name.lastIndexOf(".expected");
+					name = name.substring(0, x);
+					String nt[] = name.split("[,]");
+					final int depth = Digits.ints
+							.parse(new String(Lang.codepoint.sub.after(nt[0].toCharArray(), nt[0].length(), '=')));
+					final int index = Digits.ints
+							.parse(new String(Lang.codepoint.sub.after(nt[1].toCharArray(), nt[1].length(), '=')));
+
+					// =============
+					Range r = Range.of(0, len).toImmutable();
+					Range r2 = Lang.codepoint.block.of(src, len, prefix, suffix, esc, depth, index, r, sps, globalMode);
+					String result;
+					String expected = Files.readAllLines(expectedBlock).stream().collect(Collectors.joining("\n"));
+					if (r2.getFrom() == -1 && r2.getTo() == -1) {
+						result = "";
+					} else {
+						result = new String(src, 0, len).substring(r2.getFrom(), r2.getTo());
+					}
+
+					assertEquals(expectedDir.getFileName() + "/" + expectedBlock.getFileName() + "\n",expected, result);
+
+					return FileVisitResult.CONTINUE;
+				}
+
+				@Override
+				public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
+					if (e == null) {
+						return FileVisitResult.CONTINUE;
+					} else {
+						throw e;
+					}
+				}
+			});
+		}
+	}
+
+//	@Test
 	public void testMark() throws IOException, URISyntaxException {
 		testMarkIndexes();
 		testMarkRange();
@@ -71,7 +154,6 @@ public class TestLChararray {
 		int len = arr.length;
 		CodepointSupport sps = CodepointSupport.BMP;
 
-		
 		char leftPadChar = ' ';
 		char middlePadChar = '_';
 		// =================
@@ -80,25 +162,24 @@ public class TestLChararray {
 			@Override
 			public FileVisitResult visitFile(Path expectedBlock, BasicFileAttributes attrs) throws IOException {
 
-				if(expectedBlock.getFileName().toString().equals("3-29.expected")) {
-					System.out.println();
+				if (expectedBlock.getFileName().toString().equals("3-29.expected")) {
+//					System.out.println();
 				}
-				System.out.println(expectedBlock);
-				
+//				System.out.println(expectedBlock);
+
 				String name = expectedBlock.getFileName().toString();
-				int i = name.indexOf(".expected");				
+				int i = name.indexOf(".expected");
 				name = name.substring(0, i);
 				String[] r = name.split("[-]");
 				int from = Integer.parseInt(r[0]);
 				int to = Integer.parseInt(r[1]);
 
-				
 				CharArray[] lines = Lang.chararray.mark.underneath(arr, len, from, to, '^', leftPadChar, middlePadChar,
 						sps);
 				String expected = Files.readAllLines(expectedBlock).stream().collect(Collectors.joining("\n"));
 				String result = Arrays.stream(lines).map(ca -> new String(ca.getArray(), 0, ca.length()))
 						.collect(Collectors.joining("\n"));
-				assertEquals(expectedDir.getFileName() + "/" + expectedBlock.getFileName()+"\n", expected, result);
+				assertEquals(expectedDir.getFileName() + "/" + expectedBlock.getFileName() + "\n", expected, result);
 
 				return FileVisitResult.CONTINUE;
 			}
